@@ -7,7 +7,7 @@ import {
   createLogger
 } from "redux-logger";
 
-import dumbReducer from "./js/reducers/dumbReducer";
+import dumbReducer from "./reducers/dumbReducer";
 
 export default createStore(
   combineReducers({
