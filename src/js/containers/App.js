@@ -2,6 +2,9 @@ import React from "react";
 import {connect} from "react-redux";
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
+import { Dumb } from "../components/Dumb";
+import { dumbAction } from "../actions/dumbAction";
+
 class App extends React.Component {
   render() {
     this.props.consoleLog('React dispatch');
@@ -9,7 +12,7 @@ class App extends React.Component {
     return <Router>
       <div className="App">
         <h1>react-redux-webpack-babel-sass-boilerplate</h1>
-        <p>Props from Redux : {this.props.initialised}</p>
+        <Dumb initialised={this.props.initialised}/>
       </div>
     </Router>;
   }
@@ -17,17 +20,14 @@ class App extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    initialised: state.reducer.initialised
+    initialised: state.dumbReducer.initialised
   }
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
     consoleLog: (message) => {
-      dispatch({
-        type: "CONSOLE_LOG",
-        payload: message
-      })
+      dispatch(dumbAction(message))
     }
   }
 };
