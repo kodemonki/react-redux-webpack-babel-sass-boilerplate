@@ -7,7 +7,7 @@ import {
 
 import dumbReducer from "./reducers/dumbReducer";
 
-export default createStore(
+const store = createStore(
   combineReducers({
     dumbReducer
   }), {},
@@ -15,3 +15,5 @@ export default createStore(
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
   )
 );
+
+export default store;
