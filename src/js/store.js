@@ -1,18 +1,17 @@
 import {
   createStore,
   combineReducers,
-  applyMiddleware
+  applyMiddleware,
+  compose
 } from "redux";
-import {
-  createLogger
-} from "redux-logger";
 
 import dumbReducer from "./reducers/dumbReducer";
 
 export default createStore(
   combineReducers({
     dumbReducer
-  }),
-  {},
-  applyMiddleware(createLogger())
+  }), {},
+  compose(
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  )
 );
